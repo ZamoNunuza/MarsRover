@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarsRover
 {
-	public class Program
+	public class MarsRover
 	{
 		private readonly string input;
 		private RoverNavigator roverNavigator;
@@ -14,17 +14,11 @@ namespace MarsRover
 		public string FinalPosition { get; set; }
 
 
-		public Program(string input)
+		public MarsRover(string input)
 		{
 			this.input = input;
 		}
 
-		public void Initialize()
-		{
-			RoverNavigationParameters = InputValidator.GetNaviagtionParametersFromInput(input);
-		}
-		static void Main(string[] args)
-		{
-		}
+
 	}
 }
