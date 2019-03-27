@@ -65,21 +65,17 @@ namespace MarsRover
 		/* Update each rover vvv */
 		public void UpdateRovers()
 		{
-			string move;
-			string left;
-			string right;
+			int move = 1;
+			int left = 90;
+			int right = 90;
+			var output = "";
 			List<Rover.Moves> moves = new List<Rover.Moves>();
 
 
 			for (int n = rovers.Count - 1; n >= 0; n--)
 			{
 				Rover rover = rovers[n];
-
-				for (int i = 0; i < Moves.Count; i++)
-				{
-					Moves = moves;
-
-				}
+				
 				rover.UpdateRover();
 			}
 		}

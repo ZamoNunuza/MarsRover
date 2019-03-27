@@ -28,11 +28,11 @@ namespace MarsRover
 			public int r = 90;
 		}
 
-		public string movesInput { get; set; }
-		public override string ToString()
-		{
-			return movesInput;
-		}
+		//public string movesInput { get; set; }
+		//public override string ToString()
+		//{
+		//	return movesInput;
+		//}
 
 
 		public string point;
@@ -71,9 +71,6 @@ namespace MarsRover
 			List<Moves> moves = new List<Moves>();
 			//Moves = moves;
 
-			//Console.Write("Enter moves: ");
-			//string inputs = String.Empty;
-
 			string input = Console.ReadLine();
 
 			var userinput = new List<Moves>(input.Length);
@@ -86,10 +83,70 @@ namespace MarsRover
 		public void OutputRoverStats()
 		{
 			Console.WriteLine("\n-- Rover Stats Menu. --");
-			Console.WriteLine("Rover: {0}", this.point);
 			Console.WriteLine("coordinate x: {0}, coordinate y: {1}", this.x, this.y);
 			Console.WriteLine("Start x: {0}, Start y: {1}", this.startX, this.startY);
+			Console.WriteLine("Rover: {0}", this.point);
 			Console.WriteLine("movesEntered: {0}", this.moveInputs);
+
+			int move = 1;
+			int left = 90;
+			int right = 90;
+			var output = "";
+
+			int test;
+			foreach (char c in this.moveInputs)
+			{
+				output += c;
+				if (output == "M")
+				{
+					test = move;
+				}
+				else if (output == "MM")
+				{
+					test = move + move;
+				}
+				else if (output == "MML")
+				{
+					test = move + move - left;
+				}
+				else if (output == "MMLM")
+				{
+					test = move + move - left + move;
+				}
+				else if (output == "MMLMR")
+				{
+					test = move + move - left + move + right;
+				}
+				else if (output == "MMLMRM")
+				{
+					test = move + move - left + move + right + move;
+				}
+				else if (output == "MMLMRMM")
+				{
+					test = move + move - left + move + right + move + move;
+				}
+				else if (output == "MMLMRMMR")
+				{
+					test = move + move - left + move + right + move + move + right;
+				}
+				else if (output == "MMLMRMMRR")
+				{
+					test = move + move - left + move + right + move + move + right + right;
+				}
+				else if (output == "MMLMRMMRRM")
+				{
+					test = move + move - left + move + right + move + move + right + right + move;
+				}
+				else if (output == "MMLMRMMRRMM")
+				{
+					test = move + move - left + move + right + move + move + right + right + move + move;
+				}
+				else if (output == "MMLMRMMRRMML")
+				{
+					test = move + move - left + move + right + move + move + right + right + move + move - left;
+				}
+			}
+
 		}
 
 		public bool RoverDead()
