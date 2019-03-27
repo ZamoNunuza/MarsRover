@@ -6,25 +6,14 @@ using System.Threading.Tasks;
 
 namespace MarsRover
 {
-	public class Program
+
+	class Program
 	{
-		private readonly string input;
-		private RoverNavigator roverNavigator;
-		public RoverNavigationParameters RoverNavigationParameters { get; set; }
-		public string FinalPosition { get; set; }
 
-
-		public Program(string input)
-		{
-			this.input = input;
-		}
-
-		public void Initialize()
-		{
-			RoverNavigationParameters = InputValidator.GetNaviagtionParametersFromInput(input);
-		}
+		private static Manager roverManager = new Manager();
 		static void Main(string[] args)
 		{
+			roverManager.MainManagerLoop();
 		}
 	}
 }
