@@ -1,0 +1,13 @@
+how to run the program:
+	Open the solution in Visual Studio
+	Once the solution is opened, build the solution.
+	Once complete, run the program by clicking start
+	Once program is running, you will have the following input you need to enter:
+    		-coordinateX
+    		-coordinateY
+    		-startX
+    		-startY
+    		-name(this is the direction(N/E/S/W))
+    		-Enter moves
+NB: please use the input values below
+Input values: 8 10 1 2 N MMLMRMMRRMML
