@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MarsRover
 {
-	
-	 public class Manager
+
+	public class Manager
 	{
 		public List<Rover> rovers = new List<Rover>();
 		public List<Rover.Moves> Moves = new List<Rover.Moves>();
@@ -32,26 +32,22 @@ namespace MarsRover
 			Console.Write("name: ");
 			string name = Console.ReadLine();
 
-			Console.Write("Enter Moves: ");
-
-			List<Rover.Moves> moves = new List<Rover.Moves>();
-			Moves = moves;
-
-			string input = Console.ReadLine();
+			Console.Write("Enter moves: ");
+			string inputs = Console.ReadLine();
 			//while (!string.IsNullOrEmpty(input))
 			//{
 			//	moves.Add(input);
 			//	input = Console.ReadLine();
 			//}
 
-			
 
-			
+
+
 
 			//Console.Write("startingLifeTime: ");
 			//int startingLifeTime = Int32.Parse(Console.ReadLine());
 
-			this.rovers.Add(new Rover(coordinateX, coordinateY, startX, startY, moves, name));
+			this.rovers.Add(new Rover(coordinateX, coordinateY, startX, startY, inputs, name));
 		}
 		public void DestroyRovers()
 		{
@@ -69,10 +65,21 @@ namespace MarsRover
 		/* Update each rover vvv */
 		public void UpdateRovers()
 		{
+			string move;
+			string left;
+			string right;
+			List<Rover.Moves> moves = new List<Rover.Moves>();
+
+
 			for (int n = rovers.Count - 1; n >= 0; n--)
 			{
 				Rover rover = rovers[n];
 
+				for (int i = 0; i < Moves.Count; i++)
+				{
+					Moves = moves;
+
+				}
 				rover.UpdateRover();
 			}
 		}

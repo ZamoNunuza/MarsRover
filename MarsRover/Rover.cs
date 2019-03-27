@@ -10,30 +10,41 @@ namespace MarsRover
 	{
 		public long x;
 		public long y;
-		public int X;
-		public int Y;
+		public int startX;
+		public int startY;
 
-		public class Moves {
-			public string m = "1";
-			public string l = "90";
-			public string r = "90";
+		public string moveInputs;
+
+		List<Moves> moves = new List<Moves>
+		{
+			new Moves{m=1 },
+			new Moves{l=90 },
+			new Moves{r=90 }
+		};
+		public class Moves
+		{
+			public int m = 1;
+			public int l = 90;
+			public int r = 90;
 		}
-		
+
+		public string movesInput { get; set; }
+		public override string ToString()
+		{
+			return movesInput;
+		}
 
 
 		public string point;
 		public int lifeTime;
 
-		public Rover(long coordinateX, long coordinateY,int startX, int startY, List<Moves> Moves,  string cardinal)
+		public Rover(long coordinateX, long coordinateY, int startX, int startY, string inputMoves, string cardinal)
 		{
 			this.x = coordinateX;
 			this.y = coordinateY;
-			this.X = startX;
-			this.Y = startY;
-
-			List<Moves> moves = new List<Moves>();
-			Moves = moves;
-
+			this.startX = startX;
+			this.startY = startY;
+			this.moveInputs = inputMoves;
 			this.point = cardinal;
 			//this.lifeTime = lifeTime;
 		}
@@ -45,41 +56,42 @@ namespace MarsRover
 		}
 
 		/* Move the rover a desired amount */
-		public void MoveRover(int xChange, int yChange)
+		public void MoveRover(List<Moves> Moves)
 		{
+			List<Moves> moves = new List<Moves>();
+			Moves = moves;
 
-			if (xChange <= 5 && yChange <= 5 && xChange >= -5 && yChange >= -5)
+			foreach (var item in Moves)
 			{
-				this.x += xChange;
-				this.y += yChange;
-				UpdateRoverLifeTime(xChange, yChange);
-			}
-			else
-			{
-				Console.WriteLine("\nPOSITION CHANGE MUST BE <= 5 or >= -5.");
+				var input = (item.m + item.r - item.l);
 			}
 		}
 		public void GetRoverPositionChange()
 		{
-			Console.WriteLine("\n-- Rover Position Changer Menu. --");
+			List<Moves> moves = new List<Moves>();
+			//Moves = moves;
 
-			Console.Write("xChange: ");
-			int xChange = Int32.Parse(Console.ReadLine());
+			//Console.Write("Enter moves: ");
+			//string inputs = String.Empty;
 
-			Console.Write("yChange: ");
-			int yChange = Int32.Parse(Console.ReadLine());
+			string input = Console.ReadLine();
 
-			MoveRover(xChange, yChange);
+			var userinput = new List<Moves>(input.Length);
+
+
+
+			MoveRover(userinput);
 		}
 		/* Output rover statistics */
 		public void OutputRoverStats()
 		{
 			Console.WriteLine("\n-- Rover Stats Menu. --");
 			Console.WriteLine("Rover: {0}", this.point);
-			Console.WriteLine("x: {0}, y: {1}", this.x, this.y);
-			Console.WriteLine("Life: {0}", this.lifeTime);
+			Console.WriteLine("coordinate x: {0}, coordinate y: {1}", this.x, this.y);
+			Console.WriteLine("Start x: {0}, Start y: {1}", this.startX, this.startY);
+			Console.WriteLine("movesEntered: {0}", this.moveInputs);
 		}
-		
+
 		public bool RoverDead()
 		{
 			return this.lifeTime > 0;
@@ -88,7 +100,8 @@ namespace MarsRover
 		/* Main rover update "loop" */
 		public void UpdateRover()
 		{
-			//GetRoverPositionChange();
+			GetRoverPositionChange();
+
 			OutputRoverStats();
 		}
 	}
