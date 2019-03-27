@@ -48,13 +48,7 @@ namespace MarsRover
 			this.point = cardinal;
 			//this.lifeTime = lifeTime;
 		}
-
-		/* Update the rover lifetime */
-		public void UpdateRoverLifeTime(int xChange, int yChange)
-		{
-			this.lifeTime -= Math.Abs(xChange - yChange);
-		}
-
+		
 		/* Move the rover a desired amount */
 		public void MoveRover(List<Moves> Moves)
 		{
